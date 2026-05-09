@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "986425053475",
+    "project_id": "wallpapers-15202",
+    "storage_bucket": "wallpapers-15202.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:986425053475:android:a14bfd3097ebdf0c0c3c96",
+        "android_client_info": {
+          "package_name": "com.doodle.turboracing3"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoRmz9De0asvpSmy3ycP5D_vsb3xxfJpY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:986425053475:android:9e631bd68cdaa0ac0c3c96",
+        "android_client_info": {
+          "package_name": "com.doodle.turboracing3.debug"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoRmz9De0asvpSmy3ycP5D_vsb3xxfJpY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

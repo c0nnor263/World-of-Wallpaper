@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">World Of Wallpapers</string>
+
+    <string name="no_images_available">No images available…</string>
+    <string name="share_text_title">Share with</string>
+    <string name="share_app_text_content">Discover endless beauty with %1$s!\n
+        Explore countless categories of beautiful wallpapers and make your screen truly stunning.\n
+        Share the beauty with friends today!\n
+        https://play.google.com/store/apps/details?id=%2$s</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="request_notification_permission_title">🌟Get the latest!🌟</string>
+    <string name="request_notification_permission_message">Activate Push Notifications with %1$s for fresh updates and unique wallpapers. Tap into the excitement now!</string>
+
+    <string name="no_internet_connection">Error. Check internet connection</string>
+    <string name="something_went_wrong">Something went wrong…</string>
+    <string name="restore_purchases">Restore Purchases</string>
+</resources>

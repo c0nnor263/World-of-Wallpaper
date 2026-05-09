@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="favorites_wallpapers">Favorites</string>
+    <string name="remove_ads">Remove Ads</string>
+    <string name="privacy_policy">Privacy</string>
+    <string name="privacy_policy_link" translatable="false">https://sites.google.com/view/yikertaendriasmamushet-privacy</string>
+    <string name="rate_us">Rate Us</string>
+    <string name="share_app">Share App</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="developer_email">yikertaendriasmamushet@gmail.com</string>
+    <string name="tab_tags">Tags</string>
+    <string name="tab_latest">Latest</string>
+    <string name="tab_popular">Popular</string>
+    <string name="tab_premium_editor_choice">Premium</string>
+</resources>

@@ -1,10 +1,14 @@
-import UIKit
+import Shared
 import SwiftUI
-import ComposeApp
+import UIKit
 
 struct ComposeView: UIViewControllerRepresentable {
+    private let advertisingBridge = SwiftAdvertisingBridge()
+
     func makeUIViewController(context: Context) -> UIViewController {
-        MainViewControllerKt.MainViewController()
+        MainViewControllerKt.MainViewController(
+            advertisingBridge: advertisingBridge
+        )
     }
 
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
@@ -16,6 +20,3 @@ struct ContentView: View {
             .ignoresSafeArea()
     }
 }
-
-
-

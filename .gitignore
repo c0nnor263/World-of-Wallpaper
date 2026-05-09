@@ -17,3 +17,14 @@ captures
 !*.xcworkspace/contents.xcworkspacedata
 **/xcshareddata/WorkspaceSettings.xcsettings
 node_modules/
+
+# Project exclude paths
+/keystore.properties
+/Firebase CLI/functions/wordefull-cf277-e8d47b1d8be6.json
+/admobdata.properties
+/com.doodle.turboracing3.jks
+/gradle.properties
+/shared/google-services.json
+iosApp/Pods/
+iosApp/Podfile.lock
+iosApp/iosApp.xcworkspace/

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="saved_to_favorites">Saved to favorites</string>
+    <string name="removed_from_favorites">Removed from favorites</string>
+    <string name="copied_to_clipboard">Copied</string>
+    <string name="downloaded">Downloaded</string>
+    <string name="pixabay_user_id_user_profile">https://pixabay.com/users/%1$s-%2$d</string>
+    <string name="source">Source</string>
+    <string name="failed_to_save_image">Failed to save image</string>
+    <string name="image_is_not_ready">Image is not ready</string>
+    <string name="error">Error</string>
+    <string name="no_more_favorites">No more favorites left</string>
+</resources>

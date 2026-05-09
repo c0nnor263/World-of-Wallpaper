@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="favorites">Favorites</string>
+    <string name="your_favorites_list_is_empty">Your favorites list is empty</string>
+    <string name="check_more_wallpapers">Check out more beautiful wallpapers that might catch your attention.</string>
+    <string name="go_to_home_screen">Go to home screen</string>
+</resources>
