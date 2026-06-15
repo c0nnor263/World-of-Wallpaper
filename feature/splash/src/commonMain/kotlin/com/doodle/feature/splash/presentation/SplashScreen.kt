@@ -37,12 +37,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
+import com.doodle.core.advertising.LocalAdvertisingManager
+import com.doodle.core.advertising.domain.enums.isFinishLoading
 import com.doodle.core.navigation.Screens
-import com.doodle.core.ui.state.LocalRemoveAdsStatus
 import com.doodle.core.ui.theme.WallpapersTheme
-import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
@@ -67,23 +68,22 @@ fun NavGraphBuilder.splashScreen(
 
 @Composable
 fun SplashScreen(
-    viewModel: SplashScreenViewModel,
+    viewModel: SplashScreenViewModel = koinViewModel(),
     onNavigateToHome: () -> Unit
 ) {
-    val removeAdsStatus = LocalRemoveAdsStatus.current
-//    val adStatus = viewModel.appOpenAdStatus.collectAsStateWithLifecycle()
-    LaunchedEffect(Unit) {
-//        when (adStatus.value) {
-//            AdStatus.LOADING -> viewModel.incrementAppOpenTimes()
-//            else -> {
-//                if (removeAdsStatus.isNotPurchased()) {
-//                    val activity = context as ComponentActivity
-//                    viewModel.showAppOpenAd(activity)
-//                }
-        delay(2000L)
-        onNavigateToHome()
-//            }
-//        }
+    val isAvailableForAppOpenAd =
+        viewModel.isAvailableForAppOpenAd.collectAsStateWithLifecycle(null)
+    val advertisingManager = LocalAdvertisingManager.current
+    val appOpenAdStatus = advertisingManager.appOpen.adStatus.collectAsStateWithLifecycle()
+
+    LaunchedEffect(appOpenAdStatus.value, isAvailableForAppOpenAd.value) {
+        if (appOpenAdStatus.value.isFinishLoading()) {
+            val isAvailableForAd = isAvailableForAppOpenAd.value ?: return@LaunchedEffect
+            if (!isAvailableForAd) {
+                viewModel.incrementAppOpenTimes()
+            }
+            onNavigateToHome()
+        }
     }
     SplashScreenContent()
 }

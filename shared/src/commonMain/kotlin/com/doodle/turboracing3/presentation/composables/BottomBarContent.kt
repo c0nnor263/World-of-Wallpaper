@@ -11,7 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.doodle.core.advertising.CoreAdvertisingBuildKonfig
-import com.doodle.core.advertising.presentation.BannerAdView
+import com.doodle.core.advertising.banner.presentation.BannerAdView
 import com.doodle.core.ui.tweenLong
 
 @Composable

@@ -31,7 +31,7 @@ import androidx.compose.ui.util.lerp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import com.doodle.core.advertising.presentation.WatchAdForWallpaper
+import com.doodle.core.advertising.components.WatchAdForWallpaper
 import com.doodle.core.navigation.Screens
 import com.doodle.core.navigation.args.PictureDetailsNavArgs
 import com.doodle.core.navigation.args.SearchNavArgs

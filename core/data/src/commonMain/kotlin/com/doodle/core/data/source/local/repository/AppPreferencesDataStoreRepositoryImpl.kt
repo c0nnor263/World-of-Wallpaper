@@ -2,6 +2,7 @@ package com.doodle.core.data.source.local.repository
 
 import com.doodle.core.data.source.local.AppPreferencesDataStore
 import com.doodle.core.domain.source.local.repository.AppPreferencesDataStoreRepository
+import kotlinx.coroutines.flow.Flow
 import org.koin.core.annotation.Single
 
 @Single(binds = [AppPreferencesDataStoreRepository::class])
@@ -20,7 +21,7 @@ class AppPreferencesDataStoreRepositoryImpl(
         appPreferencesDataStore.incrementAppOpenTimes()
     }
 
-    override suspend fun getIsAvailableForAppOpenAd(): Boolean {
+    override fun getIsAvailableForAppOpenAdFlow(): Flow<Boolean> {
         return appPreferencesDataStore.getIsAvailableForAppOpenAd()
     }
 }

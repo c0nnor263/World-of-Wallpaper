@@ -7,8 +7,10 @@ import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.core.intPreferencesKey
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 
 internal const val IS_AVAILABLE_FOR_APP_OPEN_AD_THRESHOLD = 2
 
@@ -48,12 +50,10 @@ class AppPreferencesDataStore(private val dataStore: DataStore<Preferences>) {
         }
     }
 
-    suspend fun getIsAvailableForAppOpenAd(): Boolean {
-        val current = getIsAvailableForAppOpenAdCount()
-        return current > IS_AVAILABLE_FOR_APP_OPEN_AD_THRESHOLD
-    }
-
-    suspend fun getIsAvailableForAppOpenAdCount(): Int {
-        return dataFlow.first()[Keys.IS_AVAILABLE_FOR_APP_OPEN_AD] ?: 0
+    fun getIsAvailableForAppOpenAd(): Flow<Boolean> {
+        return dataFlow.map { preferences ->
+            val current = preferences[Keys.IS_AVAILABLE_FOR_APP_OPEN_AD] ?: 0
+            current > IS_AVAILABLE_FOR_APP_OPEN_AD_THRESHOLD
+        }
     }
 }

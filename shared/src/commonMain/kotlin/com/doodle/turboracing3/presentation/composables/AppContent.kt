@@ -24,6 +24,8 @@ import coil3.compose.setSingletonImageLoaderFactory
 import coil3.disk.DiskCache
 import coil3.memory.MemoryCache
 import coil3.request.crossfade
+import com.doodle.core.advertising.LocalAdvertisingManager
+import com.doodle.core.advertising.appopen.rememberAppOpenAdViewState
 import com.doodle.core.domain.enums.RemoveAdsStatus
 import com.doodle.core.domain.enums.isNotPurchased
 import com.doodle.core.navigation.Screens
@@ -44,6 +46,13 @@ fun AppContent() {
     val viewModel = koinViewModel<AppContentViewModel>()
     val navController = rememberNavController()
     val backStackEntry = navController.currentBackStackEntryAsState()
+
+    val isAvailableForAppOpenAd =
+        viewModel.isAvailableForAppOpenAd.collectAsStateWithLifecycle(false)
+    val advertisingManager = LocalAdvertisingManager.current
+    val appOpenAdState = rememberAppOpenAdViewState(
+        appOpenAdManager = advertisingManager.appOpen,
+    )
 
     setSingletonImageLoaderFactory { context ->
         ImageLoader.Builder(context)
@@ -68,12 +77,15 @@ fun AppContent() {
     DisposableEffectLifecycle(
         onResume = {
             viewModel.onResumeBilling()
+            val isAvailableForAppOpenAd = isAvailableForAppOpenAd.value
             if (removeAdsStatus.value.isNotPurchased() &&
-                backStackEntry.value.isPermittedForAppOpenAd()
+                backStackEntry.value.isPermittedForAppOpenAd() &&
+                isAvailableForAppOpenAd
             ) {
-                viewModel.showAppOpenAd()
+                appOpenAdState.showAd()
             }
-        }, onDestroy = {
+        },
+        onDestroy = {
             viewModel.destroyNativeAds()
         }
     )

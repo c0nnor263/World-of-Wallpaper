@@ -3,7 +3,7 @@ import SwiftUI
 import UIKit
 
 struct ComposeView: UIViewControllerRepresentable {
-    private let advertisingBridge = SwiftAdvertisingBridge()
+    private let advertisingBridge = AdvertisingBridge()
 
     func makeUIViewController(context: Context) -> UIViewController {
         MainViewControllerKt.MainViewController(

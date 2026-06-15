@@ -1,26 +1,25 @@
 package com.doodle.core.advertising.data
 
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlin.time.Duration
+import kotlin.time.Duration.Companion.seconds
 
 class AdRetryPolicy(
-    private val scope: CoroutineScope,
     private var retryCount: Int = MAX_RETRY_COUNT,
-    private val delayMillis: Long = RETRY_DELAY
+    private val delayDuration: Duration = RETRY_DELAY_IN_SECONDS.seconds
 ) {
     companion object {
         const val MAX_RETRY_COUNT = 2
-        const val RETRY_DELAY = 2000L
+        const val RETRY_DELAY_IN_SECONDS = 2L
     }
 
-    fun retry(block: () -> Unit) {
+    suspend fun retry(block: suspend () -> Unit, onExhausted: () -> Unit) {
         if (retryCount > 0) {
             retryCount--
-            scope.launch {
-                delay(delayMillis)
-                block()
-            }
+            delay(delayDuration)
+            block()
+        } else {
+            onExhausted()
         }
     }
 

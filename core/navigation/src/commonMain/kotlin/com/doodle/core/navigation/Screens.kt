@@ -31,10 +31,14 @@ sealed class Screens() {
 
 }
 
+/**
+ * Checks if the current [NavBackStackEntry] is permitted for showing App Open Ad.
+ * By default, it returns true if the [NavBackStackEntry] is null, allowing the ad to be shown.
+ */
 fun NavBackStackEntry?.isPermittedForAppOpenAd(): Boolean {
     return this?.run {
         destination.hasRoute<Screens.Search>() ||
                 destination.hasRoute<Screens.Details>() ||
                 destination.hasRoute<Screens.Home>()
-    } ?: false
+    } ?: true
 }
